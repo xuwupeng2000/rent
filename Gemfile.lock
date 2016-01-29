@@ -9,6 +9,7 @@ GEM
       tzinfo (~> 1.1)
     backports (3.6.7)
     coderay (1.1.0)
+    diff-lcs (1.2.5)
     i18n (0.7.0)
     json (1.8.3)
     method_source (0.8.2)
@@ -24,6 +25,19 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (10.4.2)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.2)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     sinatra (1.4.2)
       rack (~> 1.5, >= 1.5.2)
       rack-protection (~> 1.4)
@@ -51,6 +65,7 @@ DEPENDENCIES
   activesupport
   pry
   rake
+  rspec
   sinatra
   sinatra-reloader
   smarter_csv

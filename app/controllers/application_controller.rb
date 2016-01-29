@@ -1,8 +1,10 @@
 require 'bundler/setup'
 require 'sinatra'
-require "sinatra/reloader"
 require 'active_support/all'
 require 'pry' if development?
+require "sinatra/reloader" if development?
+
+require File.dirname(__FILE__) + '/../models/rent_record'
 
 class ApplicationController < Sinatra::Base
   configure :development do

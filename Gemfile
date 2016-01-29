@@ -9,3 +9,7 @@ group :development do
   gem "pry"
   gem "sinatra-reloader"
 end
+
+group :test do
+  gem 'rspec'
+end
