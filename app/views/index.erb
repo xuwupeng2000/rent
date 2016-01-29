@@ -2,7 +2,7 @@
   <label for='area'>Area</label>
   <select name='area' id='area'>
     <% areas.each do |a| %>
-      <option> <%= a %> </option>
+      <option value=<%= a %>> <%= a.to_s.humanize %> </option>
     <% end %>
   </select>
   <input type='submit'/>
