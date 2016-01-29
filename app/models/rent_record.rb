@@ -6,7 +6,7 @@ class RentRecord
 
   class << self
     def find(area)
-      all
+      process_dataset
       area = area.to_sym
       return [] unless @areas.include?(area)
 
@@ -17,7 +17,7 @@ class RentRecord
       results
     end
 
-    def all
+    def process_dataset
       return @data if @data
 
       @data = []
@@ -38,7 +38,7 @@ class RentRecord
     end
 
     def areas
-      all
+      process_dataset
       @areas
     end
 

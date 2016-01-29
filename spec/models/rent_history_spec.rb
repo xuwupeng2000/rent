@@ -6,7 +6,7 @@ describe RentRecord do
     RentController
   end
 
-  describe '#all' do
+  describe '#process_dataset' do
     # We know it is valid so there is no point to test this
     context 'CSV is invalid' do
       it "should raise error" do
@@ -15,7 +15,7 @@ describe RentRecord do
 
     context 'valid CSV' do
       before do
-        @data = RentRecord.all
+        @data = RentRecord.process_dataset
         @entry = @data.first
       end
 
