@@ -1,7 +1,9 @@
 <form method='post'>
   <label for='area'>Area</label>
   <select name='area' id='area'>
-    <option>Note: area options should come from data</option>
+    <% areas.each do |a| %>
+      <option> <%= a %> </option>
+    <% end %>
   </select>
   <input type='submit'/>
 </form>

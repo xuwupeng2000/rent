@@ -1,0 +1,27 @@
+<div>
+
+  <h2>Area: <%= area %></h2>
+
+  <table>
+    <tr>
+      <td>
+        Date
+      </td>
+      <td>
+        Price
+      </td>
+    </tr>
+
+    <% results.each do |e| %>
+    <tr>
+      <td>
+        <%= e.date %>
+      </td>
+      <td>
+        <%= e.price %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>
