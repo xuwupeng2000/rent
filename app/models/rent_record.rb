@@ -13,6 +13,7 @@ class RentRecord
       results = @data.collect do |e|
         o = OpenStruct.new(date: e[:date], price: e[area])
       end
+      results.sort! {|a, b| b.date <=> a.date}
       results
     end
 
