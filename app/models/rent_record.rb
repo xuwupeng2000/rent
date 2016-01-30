@@ -1,45 +1,35 @@
 require 'smarter_csv'
 require 'ostruct'
 
-class RentRecord
-
+class RentRecord < ActiveRecord::Base
 
   class << self
-    def find(area)
-      process_dataset
-      area = area.to_sym
-      return [] unless @areas.include?(area)
 
-      results = @data.collect do |e|
-        o = OpenStruct.new(date: e[:date], price: e[area])
-      end
-      results.sort! {|a, b| b.date <=> a.date}
-      results
-    end
-
+    # Populate the database first of all
     def process_dataset
-      return @data if @data
-
-      @data = []
-
-      # File is not too big no chunck size is specified
       SmarterCSV.process("data/mean-rents-by-ta.csv", { :key_mapping => {:"date.lodged" => :date} }) do |arr|
+
+        # Parse date string
         e = arr.first
         e[:date] = Date.strptime( e[:date], '%m/%d/%y')
-        # TODO: Where we can populate database
-        @data << e
+        logged_date = e[:date]
+
+        # Populate database entry
+        RentRecord.transaction do
+          arr.each do |hash|
+            # Remove :date from this hash
+            hash.delete :date
+
+            hash.each do |key, value|
+              record = self.new(logged_date: logged_date, area: key.to_s, price: value)
+              record.save!
+            end
+          end
+        end
       end
-
-      # Areas
-      @areas = @data.first.keys
-      @areas.delete(:date)
-
-      @data
     end
 
     def areas
-      process_dataset
-      @areas
     end
 
   end
