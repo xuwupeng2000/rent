@@ -2,26 +2,58 @@
 
   <h2>Area: <%= area %></h2>
 
-  <table>
-    <tr>
-      <td>
-        Date
-      </td>
-      <td>
-        Rent Price
-      </td>
-    </tr>
+  <div class="">
+    <div class="table-responsive col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <tr>
+          <td>
+            Logged Date
+          </td>
+          <td>
+            Rent Price (NZD)
+          </td>
+        </tr>
 
-    <% results.each do |e| %>
-    <tr>
-      <td>
-        <%= e.logged_date %>
-      </td>
-      <td>
-        <%= e.price %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
+        <% results.each do |e| %>
+        <tr>
+          <td>
+            <%= e.logged_date %>
+          </td>
+          <td>
+            <%= ActiveSupport::NumberHelper.number_to_currency  e.price, precision: 3 %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="table-responsive col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <tr>
+          <td>
+            Logged Date
+          </td>
+          <td>
+            National Average Price (NZD)
+          </td>
+        </tr>
+
+        <% nationals.each do |e| %>
+        <tr>
+          <td>
+            <%= e.logged_date %>
+          </td>
+          <td>
+            <%= ActiveSupport::NumberHelper.number_to_currency  e.price, precision: 3 %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
 
 </div>
