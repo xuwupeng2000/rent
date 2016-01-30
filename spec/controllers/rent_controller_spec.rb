@@ -6,6 +6,14 @@ describe RentController do
     RentController
   end
 
+  # So we can run the tests without worry about order
+  before :all do
+    records = RentRecord.all
+    if records.empty?
+      RentRecord.process_dataset
+    end
+  end
+
   describe 'GET /' do
     it "should render 200" do
       get '/'

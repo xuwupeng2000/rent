@@ -8,7 +8,7 @@ class RentController < ApplicationController
 
   post '/' do
     @area    = params[:area]
-    @results = RentRecord.find(@area)
+    @results = RentRecord.list(@area)
 
     if @results.any?
       erb :show, locals: { results: @results, area: @area.humanize }

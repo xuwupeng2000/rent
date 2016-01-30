@@ -31,5 +31,17 @@ describe RentRecord do
     end
   end
 
+  describe '#areas' do
+    it 'should list all areas in the dataset' do
+      comfirmed = 'auckland'
+      expect(RentRecord.areas).to include('auckland')
+    end
+
+    it 'should be unqiue as well' do
+      RentRecord.areas.delete 'auckland'
+      expect(RentRecord.areas).not_to include('auckland')
+    end
+  end
+
 
 end

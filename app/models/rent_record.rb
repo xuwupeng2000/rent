@@ -30,6 +30,11 @@ class RentRecord < ActiveRecord::Base
     end
 
     def areas
+      @areas ||= RentRecord.pluck(:area).uniq
+    end
+
+    def list(area)
+      RentRecord.where(area: area).order(:logged_date).to_a
     end
 
   end
